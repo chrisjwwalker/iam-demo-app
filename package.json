@@ -12,11 +12,18 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "@types/axios": "^0.14.0",
+    "@types/form-data": "^2.5.0",
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "form-data": "^3.0.0"
   },
   "scripts": {
-    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "dev-app": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app/index.ts",
+    "dev-api": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/api/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start-app": "node dist/app/index.js",
+    "start-api": "node dist/api/index.js"
   }
 }

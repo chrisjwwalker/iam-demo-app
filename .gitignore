@@ -118,3 +118,5 @@ dist
 
 # Jetbrains
 .idea
+
+.env

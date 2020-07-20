@@ -1,11 +1,10 @@
 import express from 'express'
-import { rootHandler, helloHandler } from './handlers'
+import { weatherDataHandler } from './handlers'
 
 const app = express()
 const port = process.env.PORT || '8008'
 
-app.get('/', rootHandler)
-app.get('/hello/:name', helloHandler)
+app.get('/iam-demo/api/weather', weatherDataHandler)
 
 app.listen(port, err => {
   if (err) return console.error(err)

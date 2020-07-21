@@ -38,6 +38,39 @@ Start the api on port 8008 in prod mode
 yarn start-api
 ```
 
+## Routes: Frontend
+|           Path          | Supported Methods |                            Description                          |
+| ------------------------| ------------------| --------------------------------------------------------------- |
+|  /iam-demo/home         |       GET         | Root url of the frontend. Performs redirect to below login      |
+|  /iam-demo/redirect     |       GET         | Redirects use around the login journey. Stores token in cookie  |
+|  /iam-demo/weather-for  |       GET         | Gets fake weather data for a particular region                  | 
+
+#### GET /iam-demo/weather-for
+
+##### Query parameters
+|       key        |       value      |
+|------------------|------------------|
+|      locale      |    some-string   | 
+
+
+## Routes: API
+|           Path          | Supported Methods |                                  Description                                    |
+| ------------------------| ------------------| --------------------------------------------------------------------------------|
+|  /iam-demo/api/weather  |       GET         | Gets fake weather data for the specified region. Needs bearer to authorise      | 
+
+#### GET /iam-demo/api/weather
+
+##### Header parameters
+|       key        |       value      |
+|------------------|------------------|
+|   Authorization  |   Bearer a.b.c   |
+
+##### Query parameters
+|       key        |       value      |
+|------------------|------------------|
+|     location     |    some-string   |
+
+
 License
 =======
 This code is open sourced licensed under the Apache 2.0 License

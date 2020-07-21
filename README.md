@@ -8,14 +8,14 @@ Built using Typescript & NodeJS on node version 12.16.1
 
 Duplicate `.env.sample` as `.env`. Amend the values based on your identity provider and registered application. 
 
-Build the app
-```shell script
-yarn build
-```
-
 Install the dependencies
 ```shell script
 yarn install
+```
+
+Build the app
+```shell script
+yarn build
 ```
 
 This runs the frontend app on port 8000

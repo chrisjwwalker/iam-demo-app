@@ -7,7 +7,5 @@ export const getWeatherDataFor = (location: string, token: string): Promise<any>
     }
   }
 
-  return axios.get(`http://localhost:8008/iam-demo/api/weather?location=${location}`, reqConfig).then(resp => {
-    return resp.data
-  })
+  return axios.get(`http://localhost:8008/iam-demo/api/weather?location=${location}`, reqConfig)
 }

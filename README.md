@@ -41,8 +41,9 @@ yarn start-api
 ## Routes: Frontend
 |           Path          | Supported Methods |                            Description                          |
 | ------------------------| ------------------| --------------------------------------------------------------- |
-|  /iam-demo/home         |       GET         | Root url of the frontend. Performs redirect to below login      |
-|  /iam-demo/redirect     |       GET         | Redirects use around the login journey. Stores token in cookie  |
+|  /iam-demo/home         |       GET         | Root url of the frontend. Displays login screen                 |
+|  /iam-demo/login        |       GET         | Redirects user to to MS login                                   |
+|  /iam-demo/redirect     |       GET         | Redirect used by auth server, receives auth code                |
 |  /iam-demo/weather-for  |       GET         | Gets fake weather data for a particular region                  | 
 
 #### GET /iam-demo/weather-for

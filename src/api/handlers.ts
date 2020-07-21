@@ -48,7 +48,7 @@ export const weatherDataHandler = (req: Request, res: Response) => {
     temperature_f: (tempC * 9/5) + 32,
     time: new Date().toDateString(),
     wind_mph: mph,
-    wind_kph: mph * 1.609
+    wind_kph: parseFloat((mph * 1.609).toFixed(2))
   }
 
   return res

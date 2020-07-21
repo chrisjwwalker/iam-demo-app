@@ -1,5 +1,5 @@
 import express from 'express'
-import {homeHandler, redirectHandler, weatherHandler} from './handlers'
+import {homeHandler, redirectHandler, weatherHandler, loginHandler} from './handlers'
 import * as dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 
@@ -9,8 +9,11 @@ const app = express()
 const port = process.env.PORT || '8000'
 
 app.use(cookieParser())
+app.use(express.static(__dirname + '/public'));
+app.set('view engine', 'pug')
 
 app.get('/iam-demo/home', homeHandler)
+app.get('/iam-demo/login', loginHandler)
 app.get('/iam-demo/redirect', redirectHandler)
 app.get('/iam-demo/weather-for', weatherHandler)
 

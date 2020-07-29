@@ -1,5 +1,5 @@
 import express from 'express'
-import {homeHandler, redirectHandler, weatherHandler, loginHandler} from './handlers'
+import {homeHandler, redirectHandler, weatherHandler, loginHandler, clientCredsHandler} from './handlers'
 import * as dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 
@@ -16,6 +16,7 @@ app.get('/iam-demo/home', homeHandler)
 app.get('/iam-demo/login', loginHandler)
 app.get('/iam-demo/redirect', redirectHandler)
 app.get('/iam-demo/weather-for', weatherHandler)
+app.get('/iam-demo/client', clientCredsHandler)
 
 app.listen(port, err => {
   if (err) return console.error(err);

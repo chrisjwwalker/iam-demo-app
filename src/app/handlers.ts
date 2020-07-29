@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { buildAuthProviderUrl, getAccessToken } from '../global/services/auth-service'
+import { buildAuthProviderUrl, getAccessToken, getClientCredsToken } from '../global/services/auth-service'
 import { getWeatherDataFor } from '../global/services/api-service'
 import jwt from 'jsonwebtoken'
 import path from 'path'
@@ -8,6 +8,12 @@ export const homeHandler = (req: Request, res: Response) => {
   return res
     .status(200)
     .sendFile(path.join(__dirname + '/views/home.html'));
+}
+
+export const clientCredsHandler = (req: Request, res: Response) => {
+  return getClientCredsToken().then(resp => {
+    return res.json({ ...resp })
+  })
 }
 
 export const loginHandler = (req: Request, res: Response) => {
@@ -27,8 +33,11 @@ export const redirectHandler = (req: Request, res: Response) => {
   const { code } = query
 
   return getAccessToken(code.toString()).then(token => {
+    // return res.json({ ...token })
+
     return res
-      .cookie('user', token.access_token)
+      .cookie('access', token.access_token)
+      .cookie('id', token.access_token)
       .redirect('/iam-demo/weather-for?locale=london')
   }).catch(e => {
     console.log(e)
@@ -37,7 +46,7 @@ export const redirectHandler = (req: Request, res: Response) => {
 }
 
 export const weatherHandler = (req: Request, res: Response) => {
-  const token = req.cookies.user
+  const token = req.cookies.access
   if(token === null) {
     return res
       .redirect('/iam-demo/home')
